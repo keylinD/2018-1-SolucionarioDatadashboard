@@ -48,8 +48,8 @@ describe('data', () => {
       it('debería tener propiedad exercises con valor {total: 2, completed: 0, percent: 0}', () => {
         assert.deepEqual(processed[0].stats.exercises, {
           total: 2,
-          completed: 0,
-          percent: 0,
+          completed: 1,
+          percent: 50,
         });
       });
 
@@ -57,8 +57,9 @@ describe('data', () => {
         assert.deepEqual(processed[0].stats.quizzes, {
           total: 3,
           completed: 2,
-          percent: 67,
+          percent: 66.7,
           scoreAvg: 29,
+          scoreSum: 57
         });
       });
 
