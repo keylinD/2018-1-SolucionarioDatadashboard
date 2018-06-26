@@ -52,6 +52,7 @@ window.computeUsersStats = (
           for (let part of Object.values(unit.parts)) { //aca recorremos cada parte de cada unidad de cada curso, las partes pueden ser lecturas, quizes, exercise, etc
             //en este caso si la part.length = 0 quiere decir que NO tiene datos en su interior 
             //asi que para que los contadores no se aumenten, se les da el valor de cero y se define aqui para asegurar que siempre los porcentajes den al menos cero
+
             if (part.length === 0) {
               quizzes = 0;
               exercises = 0;
@@ -86,7 +87,7 @@ window.computeUsersStats = (
               // saca la suma general para luego sacar el promedio
               scoreSum += part.score;
             }
-            quizzesPercent = Math.round((quizzesCompleted * 100 *10 / quizzes)) / 10;//truco para sacar 1 decimal
+            quizzesPercent = Math.round((quizzesCompleted * 100 * 10 / quizzes)) / 10;//truco para sacar 1 decimal
             // si la part.type es una practice aumenta el contador de exercises             
             if (part.type === 'practice') {
               exercises++;
@@ -126,3 +127,18 @@ window.computeUsersStats = (
   //Deberíamos retornar los resultados!
   return users;
 }
+
+window.sortUsers = (users/*array*/, orderBy/*string*/, orderDirection/*string*/) => {  //esta funcion ordena por orden alfabetico a las alumnas
+  if (orderBy === "name") { //name es el campo por el que quiere ordenarlo
+    //sort es una funcion que ordena los arreglos, recibe una funcion que compara un elemento con otro
+    return users.sort(function (a, b) {
+      if (orderDirection == "ASC") {
+        //localCompare compara 2 strings que en este caso son los nombres de las alumnas
+        return a.name.localeCompare(b.name);
+      } else {
+        //esto mostrara el ordenamiento en orden descendente
+        return a.name.localeCompare(b.name) * -1;
+      }
+    });
+  }
+};
