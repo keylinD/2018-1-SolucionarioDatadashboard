@@ -142,3 +142,15 @@ window.sortUsers = (users/*array*/, orderBy/*string*/, orderDirection/*string*/)
     });
   }
 };
+
+window.filterUsers = (users, search) => {
+  if(search){
+    if(users){
+      search =search.toLowerCase();
+      return  users.filter(user => user &&
+         user.name &&
+        user.name.toLowerCase().indexOf(search)>= 0);
+    }
+  }
+  return users;
+};

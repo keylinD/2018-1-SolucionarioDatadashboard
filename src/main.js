@@ -68,3 +68,14 @@ function onToggleSort() {
     `;
   }
 }
+
+function onSearchBoxChange(){
+  const search = searchBox.value;
+  const filteredUsers = window.filterUsers(usersStats, search);
+  studentContainer.innerHTML = "";
+  filteredUsers.forEach(student => {
+    studentContainer.innerHTML += `
+      <p>${student.name}</p>
+    `;
+  });
+}
