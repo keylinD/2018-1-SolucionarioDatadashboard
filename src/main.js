@@ -59,12 +59,12 @@ function onToggleSort() {
     toggleSort.innerText = "ASC";
   }
   //llamamos a la funcion de ordenamiento para que que ordene los usuarios
-  const sortedUsers = window.sortUsers(usersStats, "name", direction);
+  const sortedUsers = window.sortUsers(usersStats, "percent", direction);
   //no se hace el getElementById por que en JS todo lo declarado en el html con un id queda como variable global :O
   studentContainer.innerHTML = "";
   for(let student of sortedUsers){
     studentContainer.innerHTML += `
-      <p>${student.name}</p>
+      <p>${student.name} ${student.stats.percent}</p>
     `;
   }
 }
