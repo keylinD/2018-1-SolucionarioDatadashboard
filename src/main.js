@@ -59,7 +59,7 @@ function onToggleSort() {
     toggleSort.innerText = "ASC";
   }
   //llamamos a la funcion de ordenamiento para que que ordene los usuarios
-  const sortedUsers = window.sortUsers(usersStats, "name", direction);
+  const sortedUsers = window.sortUsers(usersStats, "percent", direction);
   //no se hace el getElementById por que en JS todo lo declarado en el html con un id queda como variable global :O
   studentContainer.innerHTML = "";
   for(let student of sortedUsers){
@@ -68,8 +68,14 @@ function onToggleSort() {
     <div class="col-lg-4 col-sm-6 col-xs-12">${student.name}</div>
     `;
   }
-}
-
-function onSearchBoxChange() {
-  
+} 
+function onSearchBoxChange(){
+  const search = searchBox.value;
+  const filteredUsers = window.filterUsers(usersStats, search);
+  studentContainer.innerHTML = "";
+  filteredUsers.forEach(student => {
+    studentContainer.innerHTML += `
+      <p>${student.name}</p>
+    `;
+  });
 }

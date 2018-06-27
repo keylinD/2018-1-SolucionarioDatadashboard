@@ -141,16 +141,26 @@ window.sortUsers = (users/*array*/, orderBy/*string*/, orderDirection/*string*/)
       }
     });
   }
-  if (orderBy === "percent") {
-    return users.sort((a,b) => {
-      if (orderDirection == "ASC") {
+
+  if(orderBy === "percent"){
+    return users.sort((a,b)=>{
+      if(orderDirection == "ASC"){
         return a.stats.percent - b.stats.percent;
       }else{
-        return a.name.localeCompare()
+        return (a.stats.percent - b.stats.percent)*-1;
       }
     });
   }
 };
-window.filterUsers = (users, search) =>{
- 
-}
+
+window.filterUsers = (users, search) => {
+  if(search){
+    if(users){
+      search =search.toLowerCase();
+      return  users.filter(user => user &&
+         user.name &&
+        user.name.toLowerCase().indexOf(search)>= 0);
+    }
+  }
+  return users;
+};
