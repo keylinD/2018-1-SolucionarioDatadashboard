@@ -141,4 +141,16 @@ window.sortUsers = (users/*array*/, orderBy/*string*/, orderDirection/*string*/)
       }
     });
   }
+  if (orderBy === "percent") {
+    return users.sort((a,b) => {
+      if (orderDirection == "ASC") {
+        return a.stats.percent - b.stats.percent;
+      }else{
+        return a.name.localeCompare()
+      }
+    });
+  }
 };
+window.filterUsers = (users, search) =>{
+ 
+}

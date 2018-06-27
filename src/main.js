@@ -63,8 +63,13 @@ function onToggleSort() {
   //no se hace el getElementById por que en JS todo lo declarado en el html con un id queda como variable global :O
   studentContainer.innerHTML = "";
   for(let student of sortedUsers){
+    //otra manera de hacerlo es poniendolo dentro de un <p>${student.name}</p> 
     studentContainer.innerHTML += `
-      <p>${student.name}</p>
+    <div class="col-lg-4 col-sm-6 col-xs-12">${student.name}</div>
     `;
   }
+}
+
+function onSearchBoxChange() {
+  
 }
